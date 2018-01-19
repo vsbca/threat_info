@@ -6,8 +6,7 @@ import Helper
 
 def vt_ip(ip, api):
     url = "https://www.virustotal.com/vtapi/v2/ip-address/report"
-    
-    #vt_api="830f7ee616d1c181bf909dff1fb88a09995ed921b7ad29d2d7bebc8b8c83c77e"
+  
     vt_api = api
 
     parameter = {"ip": ip, "apikey": vt_api}
