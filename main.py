@@ -33,8 +33,6 @@ import VT
 import CM
 import Vulner_search
 
-
-
 try:
     import requests
     from bs4 import BeautifulSoup
@@ -229,19 +227,12 @@ def main():
             if vt_data and counter < 3:
                 print('''
                 Virustotal report for hash %s
-                =======================
+                ==========================
                 Detection: %s
                 Last time analysed: %s
                 ''' % (args.hash, vt_data[1], vt_data[0]))
-                print("Analysis details: ")
-                for k, v in vt_data[2].items():
-                    print('''
-                    Antivirus %s version %s
-                    ============
-                    Result: %s
-                    Last Updated: %s
-                    Detected: %s
-                    ''' % (k, v.get('version'), v.get('result'), v.get('update'), v.get('detected')))
+                
+                
     elif args.file_ip:
         if CYMON_API:
             args.api = CYMON_API
