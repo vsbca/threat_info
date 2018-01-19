@@ -24,12 +24,15 @@ import argparse
 import json
 from time import sleep
 from operator import itemgetter
+import sys
 
 #internal modules
 import Config
 import Helper
 import VT
 import CM
+import Vulner_search
+
 
 
 try:
@@ -61,8 +64,18 @@ def main():
     parser.add_argument("-fh", "--file-hash", help="file with hashes(MD5,SHA1,SHA256) to check. One per line.")
     parser.add_argument("--api", help="Optional api key for Cymon")
     parser.add_argument("--vtapi", help="Virustotal api key.")
+    parser.add_argument("--cve", help="CVE for searching exploit link")
+   
 
     args = parser.parse_args()
+    if len(sys.argv) == 1:
+        parser.print_help()
+
+    if args.cve:
+        cve=args.cve
+        print("======== List of exploits for %s from Vulner is below =================" %cve.upper())
+        Vulner_search.Search_exploit(cve.upper())
+
 
     if CYMON_API:
         args.api = CYMON_API
@@ -403,10 +416,5 @@ def main():
                         results["vt_details"] = vt_data[2]
                 json.dump(results, f, indent=4)
             print("File hashes_report.json is created")
-    else:
-        print('''
-            Threat Intelligence
-        ''')
 
-    #parser.print_help()
 main()
