@@ -13,10 +13,8 @@ Integration with Twitter
 This script checks for the domain name and IP address
 
 Reference:
-https://github.com/cudeso/host-enrich/blob/master/host_enricher.py
-https://github.com/giangm9/CrawlerAndValidator
-
 Inspired from Harbinger, github
+https://github.com/exp0se/harbinger
 
 '''
 import sys
@@ -24,7 +22,8 @@ import argparse
 import json
 from time import sleep
 from operator import itemgetter
-import sys
+
+from bs4 import BeautifulSoup
 
 #internal modules
 import Config
@@ -33,17 +32,6 @@ import VT
 import CM
 import Vulner_search
 
-try:
-    import requests
-    from bs4 import BeautifulSoup
-
-except ImportError:
-    print('''Some required modules is not found.
-          Please install them with:
-          pip install requests
-          pip install cymon
-          pip install beautifulsoup4''')
-    sys.exit(1)
 
 #Configuration initialization
 Config.initsettings()
