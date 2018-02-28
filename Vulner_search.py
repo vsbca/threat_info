@@ -14,6 +14,5 @@ def Search_exploit(search_string):
                 print(link)
     except:
         print("there is no exploit/poc for this cve")
-p=Search_exploit("CVE-2014-0160")
-print(p)
+
 
